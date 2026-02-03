@@ -4,3 +4,4 @@
 # This is a working personal project that is NASA oriented, and will likely track upcoming missions, launch dates and progress updates.
 
 ## It is constantly evolving and may change forms so update will be made here as necessary.
+### Remember to manually access the admin url extension.
