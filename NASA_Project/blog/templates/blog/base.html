@@ -1,0 +1,21 @@
+<!-- Base html template -->
+
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <Title>{% block title %}{% endblock %}</Title>
+        <link href="{% static "css/blog.css" %}" rel="stylesheet">
+    </head>
+    <body>
+        <div id="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <div id="sidebar">
+            <h2>NASA Missions</h2>
+            <p>Interesting Updates</p>
+        </div>
+    </body>
+</html>

@@ -2,6 +2,20 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 
+# Will pull all blog posts that are in Published status from database
+class PublishedManager(models.Manager):
+    def get_queryset(self):
+        return (
+            super().get_queryset().filter(status=Post.Status.PUBLISHED)
+        )
+    
+# Will pull all blog posts that are in draft status from database
+class DraftManager(models.Manager):
+    def get_queryset(self):
+        return (
+            super().get_queryset().filter(status=Post.Status.DRAFT)
+        )
+
 # I'm unsure what models I'll need yet
 
 class Post(models.Model):
@@ -51,6 +65,16 @@ class Post(models.Model):
         choices = Status,
         default = Status.DRAFT
     )
+
+    # declares the default model manager
+    objects = models.Manager()
+
+    # Custom model manager for published posts
+    published = PublishedManager()
+
+    # Custom model manager for drafted posts
+    drafted = DraftManager()
+
     # for displaying posts on page in ascending order, oldest first
     class Meta:
         ordering = ['publish']
